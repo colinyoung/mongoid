@@ -108,7 +108,7 @@ module Mongoid
       _building do
         @new_record = true
         @attributes ||= {}
-        options ||= {}
+        with(self.class.persistence_options)
         apply_pre_processed_defaults
         process_attributes(attrs) do
           yield(self) if block_given?
